@@ -1,5 +1,5 @@
 import { css, cva, type RecipeVariantProps } from '@styled-stytem/css'
-import { SystemStyleObject } from '@styled-stytem/types/system-types'
+import { SystemStyleObject } from '@styled-stytem/types'
 
 const buttonRecipe = cva({
   base: {

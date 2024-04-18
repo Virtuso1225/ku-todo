@@ -2,6 +2,7 @@ import { css } from '@styled-stytem/css'
 import { ChevronRight, Mail } from 'lucide-react'
 
 import Button from '@/components/Button'
+import { Progress } from '@/components/Progress'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Button size="icon">
           <ChevronRight className={css({ w: 4, h: 4 })} />
         </Button>
+        <Progress value={50} css={{ w: '1/2', h: 2 }} />
       </div>
     </div>
   )
