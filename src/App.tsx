@@ -2,6 +2,7 @@ import { css } from '@styled-stytem/css'
 import { ChevronRight, Mail } from 'lucide-react'
 
 import Button from '@/components/Button'
+import { Input } from '@/components/Input'
 import { Progress } from '@/components/Progress'
 import { useTheme } from '@/util/theme-provider'
 
@@ -13,7 +14,6 @@ function App() {
         display: 'flex',
         w: 'full',
         flexDir: 'column',
-        // maxW: 'sm',
         alignItems: 'flex-start',
         gap: '[6px]'
       })}
@@ -22,7 +22,6 @@ function App() {
         className={css({
           display: 'flex',
           w: 'full',
-          // maxW: 'sm',
           alignItems: 'center',
           spaceX: '2'
         })}
@@ -37,8 +36,9 @@ function App() {
         <Button size="icon">
           <ChevronRight className={css({ w: 4, h: 4 })} />
         </Button>
-        <Progress value={50} css={{ w: '1/2', h: 2 }} />
+        <Progress value={50} css={{ w: '1/4', h: 2 }} />
       </div>
+      <Input placeholder="Email" id="email" css={{ w: '1/4' }} />
     </div>
   )
 }
