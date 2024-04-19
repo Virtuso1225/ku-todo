@@ -13,7 +13,7 @@ const defaultStyle = cva({
     w: 'full',
     overflow: 'hidden',
     rounded: 'full',
-    bg: 'slate.100'
+    bg: 'secondary'
   }
 })
 export const Progress = ({ value, css: cssProps }: ProgressProps) => {
@@ -24,7 +24,7 @@ export const Progress = ({ value, css: cssProps }: ProgressProps) => {
           h: 'full',
           w: 'full',
           flex: 1,
-          bg: 'slate.950',
+          bg: 'primary',
           transition: 'all'
         })}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}

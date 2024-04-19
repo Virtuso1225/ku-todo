@@ -3,8 +3,10 @@ import { ChevronRight, Mail } from 'lucide-react'
 
 import Button from '@/components/Button'
 import { Progress } from '@/components/Progress'
+import { useTheme } from '@/util/theme-provider'
 
 function App() {
+  const { setTheme } = useTheme()
   return (
     <div
       className={css({
@@ -25,8 +27,10 @@ function App() {
           spaceX: '2'
         })}
       >
-        <Button>Default</Button>
-        <Button variant="outline">Outline</Button>
+        <Button onClick={() => setTheme('light')}>Default</Button>
+        <Button variant="outline" onClick={() => setTheme('dark')}>
+          Outline
+        </Button>
         <Button>
           <Mail className={css({ mr: 2, w: 4, h: 4 })} /> Button with icon
         </Button>

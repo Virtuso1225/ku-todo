@@ -8,25 +8,28 @@ const buttonRecipe = cva({
     alignItems: 'center',
     gap: 2.5,
     cursor: 'pointer',
-    borderRadius: 'md',
-    fontFamily: 'suite',
+    rounded: 'md',
     fontSize: 'sm',
     fontWeight: 500
   },
   variants: {
     variant: {
-      default: { bg: 'slate.950', color: 'white', _hover: { transition: 'background 0.25s', opacity: 0.9 } },
+      default: {
+        bg: 'primary',
+        color: 'primary.foreground',
+        _hover: { transition: 'background 0.25s', bg: 'primary/90' }
+      },
       outline: {
-        bg: '#fff',
-        border: '1px solid #E2E8F0',
-        color: 'slat.900',
-        _hover: { bg: 'slate.100', transition: 'background 0.25s' }
+        bg: 'background',
+        border: 'input',
+        color: 'primary',
+        _hover: { transition: 'background 0.25s', bg: 'accent', color: 'accent.foreground' }
       }
     },
     size: {
       default: { h: 10, px: 4, py: 2 },
-      sm: { h: 9, rounded: 'md', px: 3 },
-      lg: { h: 11, rounded: 'md', px: 8 },
+      sm: { h: 9, px: 3 },
+      lg: { h: 11, px: 8 },
       icon: { h: 10, w: 10 }
     }
   },
