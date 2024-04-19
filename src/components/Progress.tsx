@@ -9,14 +9,15 @@ interface ProgressProps {
 const defaultStyle = cva({
   base: {
     position: 'relative',
-    h: 4,
+    h: 2,
     w: 'full',
     overflow: 'hidden',
     rounded: 'full',
     bg: 'secondary'
   }
 })
-export const Progress = ({ value, css: cssProps }: ProgressProps) => {
+const Progress = ({ value, css: cssProps }: ProgressProps) => {
+  console.log('Progress')
   return (
     <div className={css(defaultStyle.raw(), cssProps)}>
       <div
@@ -32,3 +33,5 @@ export const Progress = ({ value, css: cssProps }: ProgressProps) => {
     </div>
   )
 }
+
+export default Progress

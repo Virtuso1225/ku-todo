@@ -45,5 +45,4 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 const Button = ({ variant, size, css: cssProps, ...props }: ButtonProps) => {
   return <button {...props} className={css(buttonRecipe.raw({ variant, size }), css.raw(cssProps))}></button>
 }
-
 export default Button
