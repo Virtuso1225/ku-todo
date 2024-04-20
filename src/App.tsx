@@ -1,20 +1,17 @@
 import { css } from '@styled-stytem/css'
 import { ChevronRight, Mail } from 'lucide-react'
-import { useEffect } from 'react'
 
-import Button from '@/components/Button'
-import { Input } from '@/components/Input'
-import Progress from '@/components/Progress'
-import Switch from '@/components/Switch'
-import { useTheme } from '@/util/theme-provider'
+import Button from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Progress } from '@/components/ui/progress'
+import { Switch } from '@/components/ui/switch'
+// import { useTheme } from '@/util/theme-provider'
 import { useToggle } from '@/util/useToggle'
 
 function App() {
-  const { setTheme } = useTheme()
+  // const { setTheme } = useTheme()
   const [checked, setChecked] = useToggle(false)
-  useEffect(() => {
-    setTheme(checked ? 'dark' : 'light')
-  }, [checked])
+
   return (
     <div
       className={css({
@@ -42,10 +39,10 @@ function App() {
         <Button size="icon">
           <ChevronRight className={css({ w: 4, h: 4 })} />
         </Button>
-        <Progress value={50} css={{ w: '1/4' }} />
+        <Progress value={50} className={css({ w: '1/4' })} />
       </div>
       <Input placeholder="Email" id="email" css={{ w: '1/4' }} />
-      <Switch checked={checked} onChange={setChecked} />
+      <Switch checked={checked} onCheckedChange={setChecked} />
     </div>
   )
 }

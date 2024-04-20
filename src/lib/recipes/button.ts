@@ -1,7 +1,8 @@
-import { css, cva, type RecipeVariantProps } from '@styled-stytem/css'
-import { SystemStyleObject } from '@styled-stytem/types'
+import { defineRecipe } from '@pandacss/dev'
 
-const buttonRecipe = cva({
+export const buttonRecipe = defineRecipe({
+  className: 'button',
+  description: 'Button component',
   base: {
     display: 'inline-flex',
     justifyContent: 'center',
@@ -38,11 +39,3 @@ const buttonRecipe = cva({
     size: 'default'
   }
 })
-
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  RecipeVariantProps<typeof buttonRecipe> & { css?: SystemStyleObject }
-
-const Button = ({ variant, size, css: cssProps, ...props }: ButtonProps) => {
-  return <button {...props} className={css(buttonRecipe.raw({ variant, size }), css.raw(cssProps))}></button>
-}
-export default Button

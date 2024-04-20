@@ -1,6 +1,13 @@
 import { defineConfig } from '@pandacss/dev'
 
-// eslint-disable-next-line no-restricted-imports
+import {
+  switchRootRecipe,
+  switchThumbRecipe,
+  buttonRecipe,
+  progressRecipe,
+  progressIndicatorRecipe,
+  inputRecipe
+} from './src/lib/recipes'
 import { semanticTokens } from './src/lib/semantic-tokens'
 
 export default defineConfig({
@@ -18,6 +25,14 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
+      recipes: {
+        switchRoot: switchRootRecipe,
+        switchThumb: switchThumbRecipe,
+        button: buttonRecipe,
+        progress: progressRecipe,
+        progressIndicator: progressIndicatorRecipe,
+        input: inputRecipe
+      },
       tokens: {
         fonts: {
           suite: { value: 'var(--font-suite), sans-serif' }

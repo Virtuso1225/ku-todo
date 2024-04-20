@@ -8,7 +8,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'styled-system'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'styled-system', 'panda.config.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['import', '@typescript-eslint', 'jsx-a11y', 'react-refresh'],
   rules: {
