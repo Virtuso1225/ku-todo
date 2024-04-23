@@ -3,6 +3,15 @@ import { ChevronRight, Mail } from 'lucide-react'
 
 import Button from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from '@/components/ui/pagenation'
 import { Progress } from '@/components/ui/progress'
 import { Switch } from '@/components/ui/switch'
 // import { useTheme } from '@/util/theme-provider'
@@ -11,7 +20,6 @@ import { useToggle } from '@/util/useToggle'
 function App() {
   // const { setTheme } = useTheme()
   const [checked, setChecked] = useToggle(false)
-
   return (
     <div
       className={css({
@@ -43,6 +51,30 @@ function App() {
       </div>
       <Input placeholder="Email" id="email" css={{ w: '1/4' }} />
       <Switch checked={checked} onCheckedChange={setChecked} />
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   )
 }

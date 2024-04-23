@@ -6,7 +6,10 @@ import {
   buttonRecipe,
   progressRecipe,
   progressIndicatorRecipe,
-  inputRecipe
+  inputRecipe,
+  paginationRecipe,
+  paginationContentRecipe,
+  paginationEllipsisRecipe
 } from './src/lib/recipes'
 import { semanticTokens } from './src/lib/semantic-tokens'
 
@@ -31,7 +34,10 @@ export default defineConfig({
         button: buttonRecipe,
         progress: progressRecipe,
         progressIndicator: progressIndicatorRecipe,
-        input: inputRecipe
+        input: inputRecipe,
+        pagination: paginationRecipe,
+        paginationContent: paginationContentRecipe,
+        paginationEllipsis: paginationEllipsisRecipe
       },
       tokens: {
         fonts: {
