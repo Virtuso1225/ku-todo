@@ -1,6 +1,7 @@
 import { css } from '@styled-stytem/css'
 
 import TodoInput from '@/components/TodoInput'
+import TodoList from '@/components/TodoList'
 
 const TodoFrame = () => {
   return (
@@ -14,6 +15,7 @@ const TodoFrame = () => {
       })}
     >
       <TodoInput />
+      <TodoList />
     </div>
   )
 }

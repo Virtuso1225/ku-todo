@@ -19,44 +19,55 @@ const TodoDashBoard = () => {
     setCheck()
   }
   return (
-    <Card className={css({ border: 'base', w: '400px' })}>
-      <CardHeader>
-        <CardTitle>Todo Dashboard</CardTitle>
-        <CardDescription>Here you can see your status</CardDescription>
-      </CardHeader>
-      <CardContent className={css({ pt: 5, spaceY: 4, justifyContent: 'space-between' })}>
-        <div className={css({ display: 'flex', flexDir: 'column', gap: 3 })}>
-          <div
-            className={css({
-              display: 'flex',
-              flexDir: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              alignSelf: 'stretch'
-            })}
-          >
-            <Label className={css({ fontWeight: 800 })}>Theme Selection</Label>
-            <Switch checked={isChecked} onCheckedChange={handleTheme} />
+    <Card
+      className={css({
+        display: 'flex',
+        flexDir: 'column',
+        border: 'base',
+        w: '300px',
+        alignSelf: 'stretch',
+        justifyContent: 'space-between'
+      })}
+    >
+      <div>
+        <CardHeader>
+          <CardTitle>Todo Dashboard</CardTitle>
+          <CardDescription>Here you can see your status</CardDescription>
+        </CardHeader>
+        <CardContent className={css({ pt: 5, spaceY: 4, justifyContent: 'space-between' })}>
+          <div className={css({ display: 'flex', flexDir: 'column', gap: 3 })}>
+            <div
+              className={css({
+                display: 'flex',
+                flexDir: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                alignSelf: 'stretch'
+              })}
+            >
+              <Label className={css({ fontWeight: 800 })}>Theme Selection</Label>
+              <Switch checked={isChecked} onCheckedChange={handleTheme} />
+            </div>
+            <div className={css({ display: 'flex', flexDir: 'row', gap: 3, fontSize: 'sm' })}>
+              <p>current mode: </p>
+              <p className={css({ fontWeight: 800 })}>{isChecked ? 'Dark' : 'Light'}</p>
+            </div>
           </div>
-          <div className={css({ display: 'flex', flexDir: 'row', gap: 3, fontSize: 'sm' })}>
-            <p>current mode: </p>
-            <p className={css({ fontWeight: 800 })}>{isChecked ? 'Dark' : 'Light'}</p>
+          <div className={css({ display: 'flex', flexDir: 'column', gap: 3 })}>
+            <p className={css({ fontSize: 'sm', fontWeight: 800 })}>Progress</p>
+            <Progress value={50} />
           </div>
-        </div>
-        <div className={css({ display: 'flex', flexDir: 'column', gap: 3 })}>
-          <p className={css({ fontSize: 'sm', fontWeight: 800 })}>Progress</p>
-          <Progress value={50} />
-        </div>
-        <div className={css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 3 })}>
-          <Label className={css({ fontWeight: 800 })}>Finished</Label>
-          <p className={css({ fontSize: 'sm' })}>5</p>
-        </div>
-        <div className={css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 3 })}>
-          <Label className={css({ fontWeight: 800 })}>Left Todos</Label>
-          <p className={css({ fontSize: 'sm' })}>5</p>
-        </div>
-      </CardContent>
-      <CardFooter className={css({ justifyContent: 'center', gap: 10 })}>
+          <div className={css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 3 })}>
+            <Label className={css({ fontWeight: 800 })}>Finished</Label>
+            <p className={css({ fontSize: 'sm' })}>5</p>
+          </div>
+          <div className={css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 3 })}>
+            <Label className={css({ fontWeight: 800 })}>Left Todos</Label>
+            <p className={css({ fontSize: 'sm' })}>5</p>
+          </div>
+        </CardContent>
+      </div>
+      <CardFooter className={css({ gap: 10 })}>
         <a href="https://panda-css.com">
           <img
             src={pandaURL}
