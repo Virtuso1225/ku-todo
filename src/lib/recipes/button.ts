@@ -27,6 +27,7 @@ export const buttonRecipe = defineRecipe({
         _hover: { transition: 'background 0.25s', bg: 'accent', color: 'accent.foreground' }
       },
       ghost: {
+        color: 'primary',
         _hover: { bg: 'accent', color: 'accent.foreground' }
       }
     },

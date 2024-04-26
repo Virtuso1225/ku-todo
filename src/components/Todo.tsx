@@ -22,7 +22,7 @@ const Todo = memo(({ id, text, isChecked, handleCheck }: TodoProps) => {
         alignItems: 'center',
         rounded: 6,
         border: 'base',
-        shadow: '0px 4px 4px 0px rgba(174, 174, 174, 0.15)'
+        shadow: 'sm'
       })}
     >
       <div
@@ -42,8 +42,7 @@ const Todo = memo(({ id, text, isChecked, handleCheck }: TodoProps) => {
             fontFamily: 'SUIT',
             fontSize: 14,
             fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: 14
+            fontWeight: 500
           })}
         >
           {text}

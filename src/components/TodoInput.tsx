@@ -26,20 +26,38 @@ const TodoInput = () => {
         display: 'flex',
         alignItems: 'flex-start',
         flexDir: 'column',
-        gap: 6
+        gap: 6,
+        alignSelf: 'stretch'
       })}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className={css({ display: 'flex', gap: 2, alignItems: 'center' })}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className={css({
+            display: 'flex',
+            flexDir: 'column',
+            gap: 2,
+            alignItems: 'center',
+            alignSelf: 'stretch'
+          })}
+        >
           <FormField
             control={form.control}
             name="todo"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className={css({ display: 'flex', flexDir: 'column', alignSelf: 'stretch' })}>
                 <FormLabel className={css({ fontWeight: 900 })}>Insert</FormLabel>
                 <FormControl>
-                  <div className={css({ display: 'flex', gap: 2, justifyContent: 'center', alignItems: 'center' })}>
-                    <Input placeholder="Enter your todo!!" {...field} />
+                  <div
+                    className={css({
+                      display: 'flex',
+                      gap: 2,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      alignSelf: 'stretch'
+                    })}
+                  >
+                    <Input placeholder="Enter your todo!!" {...field} css={{ alignSelf: 'stretch' }} />
                     <Button type="submit">Submit</Button>
                   </div>
                 </FormControl>

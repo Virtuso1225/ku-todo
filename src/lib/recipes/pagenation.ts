@@ -26,6 +26,7 @@ const paginationEllipsisRecipe = defineRecipe({
   description: 'Pagination ellipsis component',
   base: {
     display: 'flex',
+    color: 'primary',
     alignItems: 'center',
     h: 9,
     w: 9,
