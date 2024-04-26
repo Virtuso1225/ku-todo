@@ -9,7 +9,9 @@ import {
   inputRecipe,
   paginationRecipe,
   paginationContentRecipe,
-  paginationEllipsisRecipe
+  paginationEllipsisRecipe,
+  checkboxRecipe,
+  labelRecipe
 } from './src/lib/recipes'
 import { semanticTokens } from './src/lib/semantic-tokens'
 
@@ -37,7 +39,9 @@ export default defineConfig({
         input: inputRecipe,
         pagination: paginationRecipe,
         paginationContent: paginationContentRecipe,
-        paginationEllipsis: paginationEllipsisRecipe
+        paginationEllipsis: paginationEllipsisRecipe,
+        checkbox: checkboxRecipe,
+        label: labelRecipe
       },
       tokens: {
         fonts: {
