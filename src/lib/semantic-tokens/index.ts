@@ -32,7 +32,7 @@ export const semanticTokens = defineSemanticTokens({
       DEFAULT: {
         value: {
           base: '{colors.gray.50}',
-          _dark: '{colors.gray.950}'
+          _dark: '#09090b'
         }
       },
       foreground: {
@@ -59,7 +59,7 @@ export const semanticTokens = defineSemanticTokens({
     border: {
       value: {
         base: '{colors.gray.200}',
-        _dark: '{colors.gray.800}'
+        _dark: 'rgba(39,39,42)'
       }
     },
     input: {

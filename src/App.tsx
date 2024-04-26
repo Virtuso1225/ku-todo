@@ -1,5 +1,6 @@
 import { css } from '@styled-stytem/css'
 
+import TodoDashBoard from '@/components/TodoDashBoard'
 import TodoFrame from '@/components/TodoFrame'
 import Wrapper from '@/components/Wrapper'
 
@@ -11,12 +12,12 @@ function App() {
         w: 'full',
         h: 'lvh',
         alignItems: 'center',
-        justifyContent: 'center',
-        border: '1px solid black'
+        justifyContent: 'center'
       })}
     >
       <Wrapper>
         <TodoFrame />
+        <TodoDashBoard />
       </Wrapper>
     </div>
   )

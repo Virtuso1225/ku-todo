@@ -6,6 +6,7 @@ export const labelRecipe = defineRecipe({
   base: {
     fontSize: 'sm',
     fontWeight: 'medium',
+    color: 'primary',
     lineHeight: 1,
     _peerDisabled: { cursor: 'not-allowed', opacity: 70 }
   }
