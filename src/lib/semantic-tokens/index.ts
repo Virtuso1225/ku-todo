@@ -18,7 +18,7 @@ export const semanticTokens = defineSemanticTokens({
       DEFAULT: {
         value: {
           base: '{colors.gray.100}',
-          _dark: '{colors.gray.800}'
+          _dark: 'rgba(39,39,42)'
         }
       },
       foreground: {
@@ -46,7 +46,7 @@ export const semanticTokens = defineSemanticTokens({
       DEFAULT: {
         value: {
           base: '{colors.gray.50}',
-          _dark: '{colors.gray.950}'
+          _dark: '#09090b'
         }
       },
       foreground: {
@@ -144,7 +144,6 @@ export const semanticTokens = defineSemanticTokens({
   //     sm: { value: 'calc({radii.radius} - 4px)' }
   //   },
   animations: {
-    'accordion-down': { value: 'accordion-down 0.2s ease-out' },
-    'accordion-up': { value: 'accordion-up 0.2s ease-out' }
+    slideDownAndFade: { value: 'slideDownAndFade 0.2s ease-out' }
   }
 })
