@@ -1,14 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { css } from '@styled-stytem/css'
+import { memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { usePostTodo } from '@/api/hooks/to-do'
 import Button from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { formSchema } from '@/lib/zod/todo-form'
 
-const TodoInput = () => {
+const TodoInput = memo(() => {
+  const { mutate: addTodo } = usePostTodo()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -16,9 +19,9 @@ const TodoInput = () => {
     }
   })
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+    addTodo(values.todo, {
+      onSuccess: () => console.log('success')
+    })
   }
   return (
     <div
@@ -70,6 +73,6 @@ const TodoInput = () => {
       </Form>
     </div>
   )
-}
+})
 
 export default TodoInput

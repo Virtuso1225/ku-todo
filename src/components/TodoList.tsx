@@ -1,7 +1,10 @@
 import { css } from '@styled-stytem/css'
+import { useAtom, useSetAtom } from 'jotai'
 import { ListFilter } from 'lucide-react'
+import { memo, useEffect, useState } from 'react'
 
-import Todo from '@/components/Todo'
+import { useGetTodo } from '@/api/hooks/to-do'
+import TodoItem from '@/components/TodoItem'
 import Button from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -12,8 +15,21 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { Label } from '@/components/ui/label'
+import { Skeleton } from '@/components/ui/skeleton'
+import { pageAtom, pageSizeAtom } from '@/lib/store/jotai'
+import { FilterStatus } from '@/lib/types/todo'
 
-const TodoList = () => {
+const TodoList = memo(() => {
+  const [filter, setFilter] = useState<FilterStatus>('all')
+  const [page, setPage] = useAtom(pageAtom)
+  const { data, isPending } = useGetTodo(page, filter)
+  const { todos, totalPage } = data?.data ?? { todos: [], totalPage: 1 }
+  const setTotalPage = useSetAtom(pageSizeAtom)
+  const handleFilter = (filter: FilterStatus) => {
+    setFilter(filter)
+    setPage(1)
+  }
+  useEffect(() => setTotalPage(totalPage), [setTotalPage, totalPage])
   return (
     <div className={css({ display: 'flex', flexDir: 'column', minH: '334px', gap: 2.5, alignSelf: 'stretch' })}>
       <div
@@ -24,9 +40,9 @@ const TodoList = () => {
           alignSelf: 'stretch'
         })}
       >
-        <Label>Your Todos</Label>
+        <Label className={css({ fontWeight: 800 })}>Your Todos</Label>
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm" css={{ h: '24px' }}>
               <ListFilter className={css({ h: 4, w: 4 })} />
               filter
@@ -35,27 +51,28 @@ const TodoList = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>Todo Filter</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem checked={true} onCheckedChange={() => {}}>
+            <DropdownMenuCheckboxItem checked={filter === 'all'} onCheckedChange={() => handleFilter('all')}>
               All
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={false} onCheckedChange={() => {}}>
+            <DropdownMenuCheckboxItem
+              checked={filter === 'unchecked'}
+              onCheckedChange={() => handleFilter('unchecked')}
+            >
               Not Done
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={false} onCheckedChange={() => {}}>
+            <DropdownMenuCheckboxItem checked={filter === 'checked'} onCheckedChange={() => handleFilter('checked')}>
               Done
             </DropdownMenuCheckboxItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test2" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
-      <Todo id="test" isChecked={false} handleCheck={() => {}} text="Accept terms and condition" />
+      {isPending
+        ? Array.from({ length: 5 }).map((_, index) => (
+            <Skeleton key={index} className={css({ w: 'full', h: '42px' })} />
+          ))
+        : todos.map(todo => <TodoItem key={todo.id} id={todo.id} isChecked={todo.isChecked} content={todo.content} />)}
     </div>
   )
-}
+})
 
 export default TodoList
