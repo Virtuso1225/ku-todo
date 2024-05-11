@@ -1,6 +1,6 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import { customApi } from '@/api/types/custom-api'
+import { customApi } from '@/api/hooks/custom-api'
 import { GetTodoRes } from '@/api/types/to-do'
 import { FilterStatus } from '@/lib/types/todo'
 

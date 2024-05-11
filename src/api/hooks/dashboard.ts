@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { customApi } from '@/api/types/custom-api'
+import { customApi } from '@/api/hooks/custom-api'
 import { TodoStatus } from '@/lib/types/todo'
 
 const getProgress = async () => {
@@ -10,4 +10,15 @@ const getProgress = async () => {
 
 export const useGetProgress = () => {
   return useQuery({ queryKey: ['progress'], queryFn: getProgress })
+}
+
+const getTest = async () => {
+  const response = await customApi.get<string>('/auth', {
+    headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+  })
+  return response.data
+}
+
+export const useGetTest = () => {
+  return useQuery({ queryKey: ['test'], queryFn: getTest })
 }

@@ -1,9 +1,10 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import { CommonResponse } from '@/api/types/common-response'
+import API from '@/lib/axios/custom-axios'
 
 const get = async <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<CommonResponse<T>>> => {
-  const response = await axios.get(url, config)
+  const response = await API.get(url, config)
   return response
 }
 
@@ -12,7 +13,7 @@ const post = async <T, D>(
   data?: T,
   config?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommonResponse<D>>> => {
-  const response = await axios.post(url, data, config)
+  const response = await API.post(url, data, config)
   return response
 }
 
@@ -21,11 +22,11 @@ const patch = async <T, D>(
   data?: T,
   config?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommonResponse<D>>> => {
-  const response = await axios.patch(url, data, config)
+  const response = await API.patch(url, data, config)
   return response
 }
 const deleteAPI = async <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<CommonResponse<T>>> => {
-  const response = await axios.delete(url, config)
+  const response = await API.delete(url, config)
   return response
 }
 

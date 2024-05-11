@@ -9,6 +9,7 @@ const TodoFrame = () => {
     <div
       className={css({
         display: 'flex',
+        flex: 1,
         flexDir: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
