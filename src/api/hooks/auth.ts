@@ -7,7 +7,7 @@ import { User, UserCredential } from '@/api/types/user'
 import { loginAtom, userCredentialAtom } from '@/lib/store/jotai'
 
 const createUser = async (data: User) => {
-  const response = await customApi.post<User, null>('http://localhost:8000/signup', data)
+  const response = await customApi.post<User, null>('/signup', data)
   return response.data
 }
 
@@ -43,7 +43,6 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      console.log('logout')
       setLoginStorage(false)
       setUserCredential(RESET)
     }

@@ -1,5 +1,5 @@
 import { css } from '@styled-stytem/css'
-import { useAtom, useSetAtom } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { ListFilter } from 'lucide-react'
 import { memo, useEffect, useState } from 'react'
 
@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Label } from '@/components/ui/label'
 import { Skeleton } from '@/components/ui/skeleton'
-import { pageAtom, pageSizeAtom } from '@/lib/store/jotai'
+import { loginAtom, pageAtom, pageSizeAtom } from '@/lib/store/jotai'
 import { FilterStatus } from '@/lib/types/todo'
 
 const TodoList = memo(() => {
@@ -29,9 +29,10 @@ const TodoList = memo(() => {
     setFilter(filter)
     setPage(1)
   }
+  const loginStatus = useAtomValue(loginAtom)
   useEffect(() => setTotalPage(totalPage), [setTotalPage, totalPage])
   return (
-    <div className={css({ display: 'flex', flexDir: 'column', minH: '334px', gap: 2.5, alignSelf: 'stretch' })}>
+    <div className={css({ display: 'flex', flexDir: 'column', h: '334px', gap: 2.5, alignSelf: 'stretch' })}>
       <div
         className={css({
           display: 'flex',
@@ -66,7 +67,7 @@ const TodoList = memo(() => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      {isPending
+      {isPending || !loginStatus
         ? Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} className={css({ w: 'full', h: '42px' })} />
           ))

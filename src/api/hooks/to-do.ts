@@ -1,24 +1,29 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useAtomValue } from 'jotai'
 
 import { customApi } from '@/api/hooks/custom-api'
 import { GetTodoRes } from '@/api/types/to-do'
+import { loginAtom } from '@/lib/store/jotai'
 import { FilterStatus } from '@/lib/types/todo'
 
 const getTodo = async (pageNum: number, filter: FilterStatus) => {
-  const response = await customApi.get<GetTodoRes>(`https://ku-todo.deno.dev/todo?filter=${filter}&page=${pageNum}`)
+  const response = await customApi.get<GetTodoRes>(`/auth/todo?filter=${filter}&page=${pageNum}`)
   return response.data
 }
 
 export const useGetTodo = (pageNum: number, filter: FilterStatus) => {
+  const loginSatus = useAtomValue(loginAtom)
+
   return useQuery({
     queryKey: ['todo', pageNum, filter],
     queryFn: () => getTodo(pageNum, filter),
-    placeholderData: keepPreviousData
+    placeholderData: keepPreviousData,
+    enabled: loginSatus
   })
 }
 
 const postTodo = async (content: string) => {
-  const response = await customApi.post<{ content: string }, null>(`https://ku-todo.deno.dev/todo/create`, { content })
+  const response = await customApi.post<{ content: string }, null>(`/auth/todo/create`, { content })
   return response.data
 }
 
@@ -38,7 +43,7 @@ interface PatchTodoProps {
   isChecked: boolean
 }
 const patchTodo = async ({ id, isChecked }: PatchTodoProps) => {
-  const response = await customApi.patch<{ isChecked: boolean }, null>(`https://ku-todo.deno.dev/todo/update/${id}`, {
+  const response = await customApi.patch<{ isChecked: boolean }, null>(`/auth/todo/update/${id}`, {
     isChecked
   })
   return response.data
@@ -56,7 +61,7 @@ export const usePatchTodo = () => {
 }
 
 const deleteTodo = async (id: string) => {
-  const response = await customApi.delete<null>(`https://ku-todo.deno.dev/todo/delete/${id}`)
+  const response = await customApi.delete<null>(`/auth/todo/delete/${id}`)
   return response.data
 }
 
