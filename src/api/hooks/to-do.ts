@@ -13,7 +13,6 @@ const getTodo = async (pageNum: number, filter: FilterStatus) => {
 
 export const useGetTodo = (pageNum: number, filter: FilterStatus) => {
   const loginSatus = useAtomValue(loginAtom)
-
   return useQuery({
     queryKey: ['todo', pageNum, filter],
     queryFn: () => getTodo(pageNum, filter),

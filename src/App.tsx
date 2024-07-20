@@ -19,7 +19,6 @@ const queryClient = new QueryClient({
 
 function App() {
   const auth = useAtomValue(loginAtom)
-
   return (
     <QueryClientProvider client={queryClient}>
       <InterceptProvider />
